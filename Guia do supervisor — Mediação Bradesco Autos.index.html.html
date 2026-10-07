@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guia do supervisor — Mediação Bradesco Autos</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F3F7F8;--card:#fff;--ink:#12303B;--mute:#5B7480;--line:#D5E1E5;--med:#0F7C8A;--sup:#12303B;--dz:#C98A00;--drc:#6B4FA0;--warn:#C8443A;--warnbg:#FBEBE9;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1D23;--card:#152A32;--ink:#E6F0F3;--mute:#9DB4BD;--line:#274550;--sup:#9ED3DC;--med:#3CC0CF;--dz:#F0B63A;--drc:#B39BE8;--warn:#F0877E;--warnbg:#3A2220}}
+:root[data-theme="dark"]{--bg:#0E1D23;--card:#152A32;--ink:#E6F0F3;--mute:#9DB4BD;--line:#274550;--sup:#9ED3DC;--med:#3CC0CF;--dz:#F0B63A;--drc:#B39BE8;--warn:#F0877E;--warnbg:#3A2220}
+*{box-sizing:border-box}html{scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 Figtree,system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",Figtree,sans-serif;line-height:1.15;margin:0}
+header{padding:40px 20px 28px;max-width:960px;margin:auto}
+h1{font-size:clamp(30px,6vw,52px);font-weight:800;max-width:15ch}
+header p{max-width:60ch;color:var(--mute);margin:14px 0 0}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.chip{display:inline-block;padding:2px 10px;border-radius:99px;font-size:13px;font-weight:700;color:#fff;white-space:nowrap}
+.c-med{background:var(--med)}.c-sup{background:#12303B}.c-dz{background:var(--dz);color:#1d1400}.c-drc{background:var(--drc)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .c-sup{background:#2B5563}:root:not([data-theme="light"]) .c-med,:root:not([data-theme="light"]) .c-drc{color:#06151a}}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav div{max-width:960px;margin:auto;display:flex;gap:4px;overflow-x:auto;padding:8px 14px}
+nav a{flex:none;padding:6px 12px;border-radius:8px;color:var(--ink);text-decoration:none;font-weight:500;font-size:14px}
+nav a:hover,nav a:focus-visible{background:var(--line);outline:none}
+main{max-width:960px;margin:auto;padding:8px 20px 60px}
+section{padding-top:36px}
+h2{font-size:clamp(24px,4vw,34px);font-weight:800}
+.lead{color:var(--mute);margin:6px 0 20px;max-width:62ch}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.alert{background:var(--warnbg);border-left:4px solid var(--warn);border-radius:6px;padding:10px 14px;margin:14px 0;font-size:15px}
+.alert b{color:var(--warn)}
+/* semana */
+.week{display:grid;grid-template-columns:repeat(5,minmax(150px,1fr));gap:10px;overflow-x:auto;padding-bottom:6px}
+.day{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.day h3{font-size:16px;padding:8px 12px;background:var(--sup);color:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .day h3{color:#06151a}}
+.day.wed h3{background:var(--dz);color:#1d1400}
+.day ul{list-style:none;margin:0;padding:10px 12px;display:grid;gap:8px;font-size:14px}
+.day li b{display:block;font-size:13px;color:var(--med)}
+.daily{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+.daily .card{flex:1 1 260px;border-top:4px solid var(--med)}
+.daily h3{font-size:18px}.daily .t{font-weight:800;color:var(--med)}
+/* fluxo */
+.flow{list-style:none;margin:0;padding:0;position:relative}
+.flow li{position:relative;padding:0 0 14px 54px}
+.flow li::before{content:"";position:absolute;left:19px;top:38px;bottom:-2px;width:2px;background:var(--line)}
+.flow li:last-child::before{display:none}
+.n{position:absolute;left:0;top:0;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font:800 17px "Bricolage Grotesque",sans-serif;color:#fff}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px}
+summary{cursor:pointer;padding:10px 14px;font-weight:700;list-style:none;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";margin-left:auto;font-size:20px;color:var(--mute)}
+details[open] summary::after{content:"–"}
+details p,details ul{margin:0;padding:0 14px 12px;font-size:15px}
+details ul{padding-left:32px}
+.path{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 8px;margin:0 14px 12px;display:block;overflow-x:auto}
+/* checklist */
+.check{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.check label{display:flex;gap:10px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer}
+.check input{margin-top:4px;width:18px;height:18px;accent-color:var(--med)}
+.check input:checked+span{color:var(--mute);text-decoration:line-through}
+.bar{height:8px;background:var(--line);border-radius:9px;overflow:hidden;margin:0 0 12px}
+.bar i{display:block;height:100%;width:0;background:var(--med);transition:width .3s}
+table{width:100%;border-collapse:collapse;font-size:14px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:13px;color:var(--mute)}tr:last-child td{border:0}
+.seq{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:10px 0}
+.seq span{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-weight:700;font-size:14px}
+.seq i{color:var(--mute);font-style:normal}
+footer{max-width:960px;margin:auto;padding:0 20px 40px;color:var(--mute);font-size:13px}
+a{color:var(--med)}
+@media (max-width:640px){.week{grid-template-columns:repeat(5,200px)}}
+</style>
+</head>
+<body>
+<header>
+<h1>Guia do supervisor: Mediação Bradesco Autos</h1>
+<p>Versão visual do manual em elaboração. Cobre só Autos: Bradesco Corporate e Itapeva têm controles próprios (a Luisa atua em Corporate e não entra nos indicadores de Autos).</p>
+<div class="legend"><span class="chip c-med">Mediadora</span><span class="chip c-sup">Supervisor</span><span class="chip c-dz">DivZero</span><span class="chip c-drc">DRC</span></div>
+</header>
+<nav><div><a href="#semana">Rotina</a><a href="#fluxo">Proposta ao recebimento</a><a href="#negativa">Negativa</a><a href="#registro">Ocorrências</a><a href="#onboarding">Nova mediadora</a><a href="#qualidade">Qualidade</a><a href="#controles">Controles</a><a href="#validar">A validar</a></div></nav>
+<main>
+
+<section id="semana">
+<h2>Rotina: o que acontece e quando</h2>
+<p class="lead">Dois compromissos fixos todos os dias, mais as entregas da semana.</p>
+<div class="daily">
+<div class="card"><span class="t">09h</span><h3>Resposta ao cliente</h3><p>Envie o <b>horário de extração</b>, a quantidade e identificação dos reports pendentes e a quantidade e valor dos recebimentos do dia.</p></div>
+<div class="card"><span class="t">09h15</span><h3>Daily da equipe</h3><p>Recebimentos, reports, propostas, exigências, minutas, contatos e obstáculos. Para cada item: próximo passo, responsável e prazo.</p></div>
+</div>
+<div class="week">
+<div class="day"><h3>Segunda</h3><ul><li><b>até 09h</b>DivZero prevê o envio do relatório semanal de monitorias</li></ul></div>
+<div class="day"><h3>Terça</h3><ul><li><b>09h30</b>Daily com a DivZero: caixa vs. meta, recebimentos, propostas e decisões pendentes</li></ul></div>
+<div class="day wed"><h3>Quarta (sem acionamento)</h3><ul><li><b>até 12h</b>Enviar visão semanal de grupos de Autos. Prepare antes das 11h</li><li><b>11h</b>Alinhamento Corporate/Itapeva (separado)</li><li><b>Resto do dia</b>Contratos parados, retornos, propostas, minutas, qualidade, base</li></ul></div>
+<div class="day"><h3>Quinta</h3><ul><li><b>11h30</b>Reunião Corporate/Itapeva (separada de Autos)</li></ul></div>
+<div class="day"><h3>Sexta</h3><ul><li><b>Qualidade</b>Conferir a prévia da campanha e apontar divergências com evidências</li></ul></div>
+</div>
+<div class="alert"><b>Mensal:</b> Fórum de Resultados de Autos, com período e corte identificados, estoque, acionamentos, propostas, aprovações, acordos, caixa vs. meta, grupos, qualidade, pendências e plano de ação.</div>
+
+<h3 style="margin:22px 0 10px">Como montar o relatório das 09h</h3>
+<div class="grid">
+<details><summary>Reports pendentes</summary>
+<span class="path">FUP Legal Negotiations → Relatório Detalhado Negotiations FollowUp</span>
+<ul><li>CompanySegmentation = DIVZERO</li><li>Category = Autos</li><li>IsPending = Yes</li><li>DebtAssignment = LBCA_AA</li></ul>
+<p>Pendente = proposta já submetida no Alpheratz sem resposta da DivZero. Não inclua rascunhos nem pendências posteriores de DRC.</p></details>
+<details><summary>Recebimentos previstos</summary>
+<span class="path">B2B - Detalhado Agreements &amp; Installments</span>
+<ul><li>Filtrar Bradesco Autos</li><li>Vencimento no dia</li><li>Conferir contrato, valor, situação e atualização da base</li></ul>
+<p>O mesmo relatório mostra vencimentos da semana e quebras. Se estiver indisponível, indique a fonte alternativa e a limitação.</p></details>
+<details><summary>Fontes do Fórum mensal</summary>
+<ul><li><b>Estoque:</b> Visão Geral Estoque de Dívidas (DIVZERO, Autos, Ativo, Alto Risco)</li><li><b>Caixa realizado:</b> Visão Geral → Debt Cash Transactions (Clear Date no período)</li><li><b>Vencimentos e quebras:</b> Agreements &amp; Installments</li></ul></details>
+</div>
+</section>
+
+<section id="fluxo">
+<h2>Da proposta ao recebimento</h2>
+<p class="lead">Quem faz o quê em cada etapa. Toque nas etapas para ver os detalhes.</p>
+<ol class="flow">
+<li><span class="n" style="background:var(--med)">1</span><details><summary><span class="chip c-med">Mediadora</span>Recebe a proposta e simula o acordo na calculadora do Alpheratz</summary><p>Confere contrato, saldo, outros contratos do devedor, processo e documentos. Depois verifica na calculadora do Alpheratz quais possibilidades de acordo existem para o contrato.</p></details></li>
+<li><span class="n" style="background:var(--med)">2</span><details><summary><span class="chip c-med">Mediadora</span>Elabora o parecer operacional e envia ao supervisor</summary><p>O parecer parte do que a calculadora mostrou ser possível e segue para validação do supervisor.</p></details></li>
+<li><span class="n" style="background:#12303B">3</span><details><summary><span class="chip c-sup">Supervisor</span>Valida o parecer operacional, redige o parecer jurídico e devolve os dois</summary><p>Valida os dados e verifica o caso. Se o parecer operacional estiver correto, valida; se não, retifica. Redige o <b>parecer jurídico</b> e envia à mediadora junto com o operacional validado (ou retificado). Confira também a <b>alçada</b> no simulador do Alpheratz, vendo se a proposta cabe nas possibilidades simuladas.</p></details></li>
+<li><span class="n" style="background:var(--med)">4</span><details><summary><span class="chip c-med">Mediadora</span><span class="chip c-dz">DivZero</span>Sobe o report e avisa no grupo de WhatsApp</summary><p>O supervisor acompanha exigências, contrapropostas e a resposta. Responda pedidos de complemento item por item, com os documentos. A mensagem no grupo não substitui o registro no sistema.</p></details></li>
+<li><span class="n" style="background:var(--drc)">5</span><details><summary><span class="chip c-drc">DRC</span>Aprovação após o aval da DivZero</summary><p>Depois que a DivZero aprova o report, a mediadora submete a proposta ao DRC no Alpheratz.</p></details></li>
+<li><span class="n" style="background:var(--med)">6</span><details><summary><span class="chip c-med">Mediadora</span><span class="chip c-sup">Supervisor</span>Minuta: elabora e valida</summary><p>Supervisor confere partes, contratos, valores, parcelas, vencimentos, garantias e condições aprovadas.</p><p><i>Pendente: inserir links dos modelos de minuta por modalidade.</i></p><div class="alert" style="margin:0 14px 12px"><b>Refinanciamento:</b> a minuta de acordo é gerada automaticamente e enviada pelo banco, pelo iGree. A mediadora não elabora nem envia a minuta nesse caso. O supervisor valida a minuta gerada (partes, contratos, valores, parcelas, vencimentos, garantias e condições aprovadas).</div></details></li>
+<li><span class="n" style="background:var(--med)">7</span><details><summary><span class="chip c-med">Mediadora</span>Envia a minuta digital para assinatura</summary><p>Em refinanciamento, o envio é feito pelo banco, pelo iGree (etapa anterior), e o supervisor acompanha a assinatura por lá.</p><p>Na renegociação, acompanhe a assinatura <b>em até 7 dias</b>, mesmo com pagamento em data posterior.</p><span class="path">Alpheratz → Legal → Consulta Minutas → Binding ID → Filtrar (todos os campos) → Reenviar</span></details></li>
+<li><span class="n" style="background:var(--med)">8</span><details><summary><span class="chip c-med">Mediadora</span>Boleto só depois da minuta assinada</summary><p>Esse é o fluxo regular. No piloto, o boleto pode ser gerado direto, mas isso não prova dispensa de report ou das aprovações: confira a regra do contrato antes de emitir.</p></details></li>
+<li><span class="n" style="background:#12303B">9</span><details><summary><span class="chip c-sup">Supervisor</span>Pós-pagamento ou quebra</summary><ul><li><b>Quitou:</b> oriente o cliente a pedir a baixa do gravame pelo 4004-4433 e registre pendências.</li><li><b>Não pagou:</b> confirme a informação antes de classificar como quebra e envie contrato e processo à equipe jurídica de Autos.</li></ul></details></li>
+</ol>
+</section>
+
+<section id="negativa">
+<h2>Quando a proposta é negada</h2>
+<p class="lead">Registre o motivo, investigue capacidade e interesse do devedor e siga a ordem do material “Negociação Meritocracia”:</p>
+<div class="seq"><span>Quitação</span><i>›</i><span>Refinanciamento</span><i>›</i><span>Entrega amigável</span><i>›</i><span>Retomada das parcelas / atualização</span></div>
+<p>Confira condições e alçadas no Alpheratz e submeta nova proposta quando necessário. A entrega amigável entra quando há incapacidade de pagamento.</p>
+<div class="alert"><b>Garantias:</b> a gestão das garantias apreendidas é de outra equipe. Se o devedor tem outros contratos e só uma garantia foi apreendida, avise a mediadora responsável para avaliar os demais. Registre o aviso e o retorno.</div>
+<p><b>Acionamentos:</b> o registro no sistema é obrigatório. Acompanhe por mediadora em <i>Acionamentos (Detalhado)</i> no Power BI (mostra contatos, não pagamentos previstos) e dê retorno individual sobre o que fazer no próximo contato.</p>
+</section>
+
+<section id="onboarding">
+<h2>Nova mediadora: checklist</h2>
+<p class="lead">Marque conforme avança (o progresso não fica salvo ao sair da página).</p>
+<div class="bar"><i id="pb"></i></div>
+<ul class="check" id="cl">
+<li><label><input type="checkbox"><span><b>Dados confirmados:</b> nome completo, carteira Autos, início, turno, centro de custo, equipamento, telefonia e responsável pela formação. Em migração, confirme a trilha com Treinamento.</span></label></li>
+<li><label><input type="checkbox"><span><b>Pedido enviado com 2 dias úteis de antecedência:</b> planilha do Beedoo para suporte_treinamento@divzero.com.br, com a planilha do Alpheratz anexa e backoffice_servicing@divzero.com.br em cópia.</span></label></li>
+<li><label><input type="checkbox"><span><b>Beedoo entregue até 08h do 1º dia:</b> trocar a senha inicial e localizar os conteúdos.</span></label></li>
+<li><label><input type="checkbox"><span><b>Curso acompanhado:</b> avaliação só após todos os conteúdos e com consentimento do responsável. Entrega antecipada = sem liberação; prova não reabre; reprovação = sem nova chance.</span></label></li>
+<li><label><input type="checkbox"><span><b>Aprovação formal:</b> nota mínima 80%, sem reteste. O Backoffice só libera o Alpheratz após a comunicação.</span></label></li>
+<li><label><input type="checkbox"><span><b>Testes antes do 1º contato:</b> carteira, Alpheratz, telefonia e acessos. Solicitar 2CLIX à Qualidade e acompanhar os primeiros atendimentos.</span></label></li>
+</ul>
+</section>
+
+<section id="registro">
+<h2>Registro de ocorrências</h2>
+<p class="lead">Do módulo 5 da formação do Alpheratz (sistema de negociação, atualização cadastral, inserção de ocorrências e histórico). Use como guia para revisar os registros das mediadoras.</p>
+<div class="grid" style="margin-bottom:14px">
+<div class="card"><h3>Regras do registro</h3><ul style="padding-left:18px;margin:8px 0 0;font-size:15px"><li>Toda ligação ou atendimento gera ocorrência no sistema</li><li>Ocorrência correta ajuda na melhor distribuição das fichas</li><li>Registre conforme o que foi dito na ligação</li><li>Acione com o cliente na linha, para as informações serem salvas</li></ul></div>
+<div class="card" style="border-top:4px solid var(--warn)"><h3>LGPD: não divulgar</h3><p style="margin:8px 0 0;font-size:15px">RG/CPF · data de nascimento · endereço · telefone · dados bancários dos clientes. A Lei 13.709/2018 protege dados de pessoas naturais, em meio físico ou digital.</p></div>
+<div class="card"><h3>CPC e WhatsApp</h3><p style="margin:8px 0 0;font-size:15px">Retorno de WhatsApp só entra após o cliente confirmar os <b>3 primeiros dígitos do CPF</b>, pois é CPC. A mensagem de disparo já pede essa confirmação.</p></div>
+</div>
+<div class="grid">
+<details><summary>Contato com o cliente</summary><ul>
+<li><b>2ª via do boleto:</b> ao enviar a 2ª via</li>
+<li><b>Informação:</b> informação extra no sistema, cliente recusa confirmar dados, ou situação sem tabulação existente</li>
+<li><b>Ligação interrompida/ruim:</b> só se houve confirmação de dados</li>
+<li><b>Entrega amigável:</b> indicação aceita, entrega em andamento, tudo ligado à E.A.</li>
+<li><b>Retorno de WhatsApp:</b> cliente responde à mensagem do negociador</li>
+<li><b>Monitoração de acordo:</b> preventivo de negociações concluídas</li>
+<li><b>Promessa de pagamento:</b> quando um acordo é formalizado</li>
+<li><b>Sem previsão de pagamento:</b> cliente diz que não tem previsão</li>
+<li><b>Solicita contato em outro dia/hora:</b> cliente pede retorno depois</li></ul></details>
+<details><summary>Ligação</summary><ul>
+<li><b>Contato desligou:</b> encerrada sem confirmação de dados</li>
+<li><b>Desconhece o cliente:</b> não conhecem o cliente no telefone discado</li>
+<li><b>Interrompida:</b> interrompida com terceiros</li>
+<li><b>Ruim:</b> áudio impossibilita o contato</li>
+<li><b>Ligação muda:</b> sem interação</li>
+<li><b>Perderam contato:</b> terceiro conhece o cliente, mas sem contato atual</li>
+<li><b>Recado:</b> terceiro com contato; deixa o 0800</li>
+<li><b>Secretária eletrônica / caixa postal</b></li>
+<li><b>Não confirma dados:</b> cliente não confirma por telefone</li>
+<li><b>Disparo de WhatsApp:</b> mensagem para acionar o cliente</li></ul></details>
+<details><summary>Tentativa de ligação</summary><ul><li><b>Sinal de fax</b></li><li><b>Telefone indisponível no momento</b></li><li><b>Telefone não atende:</b> apenas chama</li><li><b>Telefone não existe</b></li><li><b>Telefone ocupado</b></li></ul></details>
+<details><summary>Aguardando documento</summary><ul><li><b>Termo de quitação:</b> cliente pede, mas quem fornece é o Banco</li><li><b>Óbito:</b> envio de documento de falecimento</li><li><b>Suspeita de fraude:</b> cliente pagou boleto fraudado</li></ul></details>
+<details><summary>Cliente alega ação judicial ou pagamento</summary><ul><li><b>Ação contra cedente:</b> alega ação contra o Banco</li><li><b>Pagamento realizado no cedente:</b> alega pagamento no Banco</li><li><b>Pagamento realizado em juízo</b></li></ul></details>
+</div>
+</section>
+
+<section id="qualidade">
+<h2>Monitoria e qualidade</h2>
+<div class="grid">
+<div class="card"><h3>Lotes semanais</h3><ul style="padding-left:18px;margin:8px 0 0"><li>Conferir negociadores da LBCA, incluindo AgentTeam = N/A</li><li>Baixar atendimentos, preparar metadados e transcrição quando exigida</li><li>Enviar só por SFTP, na pasta do lote, tabulação e segmento, sem mudar a estrutura</li><li>Avisar a DivZero se alguém não constar do lote</li></ul></div>
+<div class="card"><h3>SFTP (WinSCP)</h3><p style="margin:8px 0 0">Protocolo SFTP<br>Host: sftp.itapevarec.com.br<br>Porta: 2222<br>Credenciais fornecidas separadamente.</p></div>
+<div class="card"><h3>Avaliação manual no 2CLIX</h3><p style="margin:8px 0 0">Quando a Qualidade orientar. No fechamento, confira <b>ao menos 3 avaliações por negociador</b>, inclusive de quem trabalhou parte do mês.</p></div>
+</div>
+<details style="margin-top:12px"><summary>Passo a passo da avaliação manual</summary>
+<span class="path">Avaliações → Avaliador → Iniciar Avaliação</span>
+<ul><li>Selecione Negócio (escritório), Campanha (segmento), Equipe (supervisor), Avaliado (negociador) e checklist</li><li>Preencha período, data, tipo de avaliação, TrackingCode, tabulação, TMA e Binding</li><li>Anexe e confira o áudio, conclua e salve</li><li>Acompanhe notas, contestações e ações de melhoria</li></ul></details>
+</section>
+
+<section id="controles">
+<h2>Distribuição e controles</h2>
+<p class="lead">Contratos novos podem entrar qualquer dia. Confira se são Autos, localize outros contratos do mesmo devedor e distribua de forma igualitária entre as mediadoras, considerando tratativas em andamento. Registre toda redistribuição.</p>
+<div class="grid">
+<div class="card"><h3>Controle por contrato</h3><p style="margin:8px 0 0;font-size:15px">Mediadora · saldo e data-base · outros contratos e garantias · processo · proposta e alçada · report (data e status) · resposta DivZero · DRC · minuta · assinatura · boleto · vencimento · pagamento · quebra · próximo passo, responsável e prazo.</p></div>
+<div class="card"><h3>Acompanhar à parte</h3><p style="margin:8px 0 0;font-size:15px">Acessos, monitorias, SFTP e entregas recorrentes.</p></div>
+<div class="card"><h3>Na passagem da função</h3><p style="margin:8px 0 0;font-size:15px">Teste Power BI, Alpheratz, Beedoo, 2CLIX e SFTP. Confira distribuição vigente, modelos de parecer e minuta, planilha de grupos, apresentação anterior, relatórios de qualidade e pendências abertas.</p></div>
+</div>
+<p style="margin-top:14px">Hoje o controle temporário é a aba <b>BBF - 3 dias</b> da planilha “Mediação - Bradesco BBF - Visão Global - LBCA” (filtrar Categoria = Autos; ver MEDIADOR, Data acionamento, Período sem acionamento e Prazo máximo próxima atualização).</p>
+</section>
+
+<section id="validar">
+<h2>Pontos a validar</h2>
+<p class="lead">Itens que o próprio manual deixa em aberto.</p>
+<div class="tw"><table>
+<tr><th>Tema</th><th>O que falta definir</th></tr>
+<tr><td>Prazo de 3 dias</td><td>A fórmula soma 3 dias corridos e não desloca prazos que caem em quarta-feira ou fim de semana. A regra precisa ser validada antes de configurar o Cobmais.</td></tr>
+<tr><td>Cobmais</td><td>Validar nomenclatura e campos antes de substituir a planilha. Tags sugeridas: contato positivo, sem contato, proposta em elaboração, report submetido, exigência da DivZero, DRC, minuta para assinatura, pagamento previsto e quebra.</td></tr>
+<tr><td>Rodízio</td><td>Ainda não existe. Proposta: revisão trimestral, mantendo com cada mediadora os contratos com tratativas avançadas.</td></tr>
+<tr><td>Minutas</td><td>Inserir os links dos modelos por modalidade.</td></tr>
+<tr><td>Piloto</td><td>Confirmar o fluxo específico e as regras vigentes de alçada e prazos dos lotes.</td></tr>
+</table></div>
+</section>
+</main>
+<footer>Versão em elaboração. Baseado no “Manual de supervisão da mediação Bradesco Autos”.</footer>
+<script>
+(function(){var b=document.querySelectorAll('#cl input'),p=document.getElementById('pb');
+function u(){var n=0;b.forEach(function(x){if(x.checked)n++});p.style.width=(n/b.length*100)+'%'}
+b.forEach(function(x){x.addEventListener('change',u)})})();
+</script>
+</body>
+</html>
